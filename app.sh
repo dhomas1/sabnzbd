@@ -1,6 +1,23 @@
 ### UNRAR ###
+#_build_unrar() {
+#local VERSION="5.3.4"
+#local FOLDER="unrar"
+#local FILE="unrarsrc-${VERSION}.tar.gz"
+#local URL="http://www.rarlab.com/rar/${FILE}"
+
+#_download_tgz "${FILE}" "${URL}" "${FOLDER}"
+#pushd target/"${FOLDER}"
+#mv makefile Makefile
+#make CXX="${CXX}" CXXFLAGS="${CFLAGS} -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE" STRIP="${STRIP}" LDFLAGS="${LDFLAGS} -pthread"
+#make install DESTDIR="${DEST}"
+#mkdir -p "${DEST}/libexec"
+#mv "${DEST}/bin/unrar" "${DEST}/libexec/"
+#popd
+#}
+
+### UNRAR ###
 _build_unrar() {
-local VERSION="5.3.4"
+local VERSION="7.1.6"
 local FOLDER="unrar"
 local FILE="unrarsrc-${VERSION}.tar.gz"
 local URL="http://www.rarlab.com/rar/${FILE}"
@@ -95,14 +112,14 @@ _build_modules() {
 
 ### SABNZBD ###
 _build_sabnzbd() {
-local VERSION="0.7.20"
+local VERSION="4.5.1"
 local FOLDER="sabnzbd-${VERSION}"
 local FILE="${VERSION}.tar.gz"
 local URL="https://github.com/sabnzbd/sabnzbd/archive/${FILE}"
 
 _download_tgz "${FILE}" "${URL}" "${FOLDER}"
 rm -fr "target/${FOLDER}/win" "target/${FOLDER}/osx"
-sed -e "s/0.7.x/0.7.20/g" \
+sed -e "s/4.5.x/4.5.1/g" \
     -e "s/unknown/1df2943d05d64915a166e2c97e1eef86f72e3ff3/g" \
     -i "target/${FOLDER}/sabnzbd/version.py"
 mkdir -p "${DEST}/app"
