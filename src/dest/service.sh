@@ -7,7 +7,7 @@
 
 framework_version="2.1"
 name="sabnzbd"
-version="0.7.20-1"
+version="4.5.1"
 description="SABnzbd is a Usenet binary newsreader"
 depends="python2"
 webui="WebUI"
