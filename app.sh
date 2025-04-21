@@ -25,7 +25,7 @@ local URL="http://www.rarlab.com/rar/${FILE}"
 _download_tgz "${FILE}" "${URL}" "${FOLDER}"
 pushd target/"${FOLDER}"
 mv makefile Makefile
-make CXX="${CXX}" CXXFLAGS="${CFLAGS} -D_FILE_OFFSET_BITS=64" STRIP="${STRIP}" LDFLAGS="${LDFLAGS} -pthread"
+make CXX="${CXX}" CXXFLAGS="${CFLAGS} -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE" STRIP="${STRIP}" LDFLAGS="${LDFLAGS} -pthread"
 make install DESTDIR="${DEST}"
 mkdir -p "${DEST}/libexec"
 mv "${DEST}/bin/unrar" "${DEST}/libexec/"
