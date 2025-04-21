@@ -50,7 +50,7 @@ sed -e "s/from distutils.core import setup/from setuptools import setup/g" \
     -i setup.py
 PKG_CONFIG_PATH="${XPYTHON}/lib/pkgconfig" \
   LDFLAGS="${LDFLAGS} -Wl,-rpath,${HPYTHON}/lib -L${XPYTHON}/lib" \
-  export PYTHONPATH="${DEST}/lib/python2.7/site-packages" \
+  PYTHONPATH="${DEST}/lib/python2.7/site-packages" \
   "/usr/bin/python" setup.py \
     build_ext --include-dirs="${XPYTHON}/" --library-dirs="${XPYTHON}" --force \
     build --force \
