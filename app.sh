@@ -57,8 +57,8 @@ local VERSION="${2}"
 local FOLDER="${1}-${VERSION}"
 local FILE="${FOLDER}.tar.gz"
 local URL="https://pypi.python.org/packages/source/$(echo ${1} | cut -c 1)/${1}/${FILE}"
-local HPYTHON="${DROBOAPPS}/python2"
-local XPYTHON="${HOME}/xtools/python2/${DROBO}"
+local HPYTHON="/usr/bin/python2"
+local XPYTHON="/usr/lib/python2.7/dist-packages"
 export QEMU_LD_PREFIX="${TOOLCHAIN}/${HOST}/libc"
 
 _download_tgz "${FILE}" "${URL}" "${FOLDER}"
@@ -68,10 +68,10 @@ sed -e "s/from distutils.core import setup/from setuptools import setup/g" \
 PKG_CONFIG_PATH="${XPYTHON}/lib/pkgconfig" \
   LDFLAGS="${LDFLAGS} -Wl,-rpath,${HPYTHON}/lib -L${XPYTHON}/lib" \
   PYTHONPATH="${DEST}/lib/python2.7/site-packages" \
-  "${XPYTHON}/bin/python" setup.py \
-    build_ext --include-dirs="${XPYTHON}/include" --library-dirs="${XPYTHON}/lib" --force \
+  "/usr/bin/python" setup.py \
+    build_ext --include-dirs="${XPYTHON}/" --library-dirs="${XPYTHON}" --force \
     build --force \
-    build_scripts --executable="${HPYTHON}/bin/python" --force \
+    build_scripts --executable="${HPYTHON}" --force \
     install --prefix="${DEST}"
 popd
 }
