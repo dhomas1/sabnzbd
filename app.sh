@@ -70,7 +70,7 @@ export QEMU_LD_PREFIX="${TOOLCHAIN}/${HOST}/libc"
 _download_file "${FILE}" "${URL}"
 mkdir -p "${DEST}/lib/python2.7/site-packages"
 PYTHONPATH="${DEST}/lib/python2.7/site-packages" \
-  "${XPYTHON}/bin/easy_install" --prefix="${DEST}" --always-copy "download/${FILE}"
+  "${XPYTHON}/bin/easy_install.py" --prefix="${DEST}" --always-copy "download/${FILE}"
 }
 
 ### DEPENDENCIES ###
@@ -90,7 +90,7 @@ _build_modules() {
     __build_module cryptography 0.9.1
   __build_module pyOpenSSL 0.15.1
 
-  rm -vf "${DEST}/bin/cheetah"* "${DEST}/bin/easy_install"* "${DEST}/bin/markdown_py"
+  rm -vf "${DEST}/bin/cheetah"* "${DEST}/bin/easy_install.py"* "${DEST}/bin/markdown_py"
 }
 
 ### SABNZBD ###
