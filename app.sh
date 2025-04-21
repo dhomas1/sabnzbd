@@ -70,7 +70,7 @@ export QEMU_LD_PREFIX="${TOOLCHAIN}/${HOST}/libc"
 _download_file "${FILE}" "${URL}"
 mkdir -p "${DEST}/lib/python2.7/site-packages"
 PYTHONPATH="${DEST}/lib/python2.7/site-packages" \
-  "/usr/bin/python ${XPYTHON}/easy_install.py" --prefix="${DEST}" --always-copy "download/${FILE}"
+  "/usr/bin/python2.7 ${XPYTHON}/easy_install.py" --prefix="${DEST}" --always-copy "download/${FILE}"
 }
 
 ### DEPENDENCIES ###
