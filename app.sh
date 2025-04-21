@@ -64,7 +64,7 @@ _build_yenc() {
 local VERSION="0.4.0"
 local FILE="yenc-${VERSION}-py2.7-linux-armv7l.egg"
 local URL="https://github.com/droboports/python-yenc/releases/download/v${VERSION}/${FILE}"
-local XPYTHON="${HOME}/xtools/python2/${DROBO}"
+local XPYTHON="/usr/lib/python2.7/dist-packages"
 export QEMU_LD_PREFIX="${TOOLCHAIN}/${HOST}/libc"
 
 _download_file "${FILE}" "${URL}"
